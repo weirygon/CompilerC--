@@ -1,5 +1,5 @@
 
-/*  Analyser Flex    */
+/*      Analyser Flex       */
 
 %option noyywrap yylineno
 %{
@@ -7,11 +7,16 @@
 	#include <stdio.h>
 	#include <stdlib.h>
 	#include "parser.tab.h"
-    #include "lexerfiles.h"
+
+    int yylex();
+    int yyparse();
+
+    int yyerror (char *s){
+        return printf("Erro encontrado: %s linha %i\n", s, yylineno);
+    }
+
 
 %}
-
-
 
 letter      [a-zA-Z]
 digit       [0-9]
@@ -20,7 +25,7 @@ intcon      (digit{digit})
 charcon     ('ch'|'\n'|'\0')
 stringcon   ("{ch}")
 
-%%
+
 
 %%
 
@@ -35,6 +40,13 @@ stringcon   ("{ch}")
 ")"     { return yytext[0]; }
 
 
+"//".*
+[ \t] /* ignora espaco em branco*/
+
+\\\n 	{ printf("c> "); } /* ignora continuacao de linha */
+
+\n 	{ return EOL; }
+.
 %%
 
 int main(){
