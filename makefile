@@ -1,5 +1,8 @@
-t2:	lexer.l parser.y
+t2:	lex.l parser.y
+	clear
 	bison -d parser.y
-	flex lexer.l
-	gcc -o teste parser.tab.c lex.yy.c -lfl -lm
-	./teste
+	flex lex.l
+	@echo "[+]Compiling..."
+	gcc -o main parser.tab.c lex.yy.c -lfl -lm
+	@echo "[+]Runnig..."
+	./main
