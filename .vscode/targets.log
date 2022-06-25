@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jun 25 15:33:09 2022
+# Make data base, printed on Sat Jun 25 18:04:50 2022
 
 # Variables
 
@@ -203,7 +203,7 @@ SNAP_REVISION = 99
 # environment
 LC_MONETARY = pt_BR.UTF-8
 # makefile
-.DEFAULT_GOAL := 
+.DEFAULT_GOAL := t2
 # environment
 XDG_CURRENT_DESKTOP = Unity
 # automatic
@@ -277,7 +277,7 @@ LANG = C
 # environment
 VSCODE_PID = 40952
 # variable set hash-table stats:
-# Load=132/1024=13%, Rehash=0, Collisions=25/156=16%
+# Load=132/1024=13%, Rehash=0, Collisions=25/157=16%
 
 # Pattern-specific Variable Values
 
@@ -285,9 +285,9 @@ VSCODE_PID = 40952
 
 # Directories
 
-# . (device 2054, inode 1329086): 7 files, no impossibilities.
+# . (device 2054, inode 1329086): 10 files, no impossibilities.
 
-# 7 files, no impossibilities in 1 directories.
+# 10 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -299,16 +299,27 @@ VSCODE_PID = 40952
 all:
 #  Command line target.
 #  Implicit rule search has been done.
- 
 #  File does not exist.
 #  File has not been updated.
 
 # Not a target:
 makefile:
+ 
 #  Implicit rule search has been done.
-#  Last modified 2022-06-25 14:42:16.108756096
+#  Last modified 2022-06-25 18:03:00.853152592
 #  File has been updated.
 #  Successfully updated.
+
+t2: lex.l parser.y
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 2):
+	bison -d parser.y
+	flex lex.l
+	gcc -o main parser.tab.c lex.yy.c -lfl -lm
+	@echo "[!]Runnig test"
+	./main
 
 # Not a target:
 .DEFAULT:
@@ -316,20 +327,32 @@ makefile:
 #  Modification time never checked.
 #  File has not been updated.
 
+# Not a target:
+parser.y:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lex.l:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 # files hash-table stats:
-# Load=4/1024=0%, Rehash=0, Collisions=0/14=0%
+# Load=7/1024=1%, Rehash=0, Collisions=0/19=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 12 / storage = 97 B / avg = 8 B
-# current buf: size = 8162 B / used = 97 B / count = 12 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 16 / storage = 135 B / avg = 8 B
+# current buf: size = 8162 B / used = 135 B / count = 16 / avg = 8 B
 
-# strcache performance: lookups = 16 / hit rate = 25%
+# strcache performance: lookups = 23 / hit rate = 30%
 # hash-table stats:
-# Load=12/8192=0%, Rehash=0, Collisions=1/16=6%
-# Finished Make data base on Sat Jun 25 15:33:09 2022
+# Load=16/8192=0%, Rehash=0, Collisions=1/23=4%
+# Finished Make data base on Sat Jun 25 18:04:50 2022
 
  

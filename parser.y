@@ -18,10 +18,18 @@ extern int yyerror();
 %token EOL
 %token TEST
 
+%start calclist
 %%
 
-    test: TEST {printf("TEste!!!\n");}
-    |TEST TEST {printf("Teste 2\n"); }
+    calclist: /*Empty Word*/ 
+    
+    | calclist test EOL {
+        }
+    | calclist error EOL { yyerror; printf(">_"); }
     ;
 
+
+    test: ';'{printf("TEste!!!\n");}
+    |TEST TEST {printf("Teste 2\n"); }
+    ;
 %%

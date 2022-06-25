@@ -11,9 +11,14 @@
     int yylex();
     int yyparse();
 
-    int yyerror (char *s){
-        return printf("Erro encontrado: %s linha %i\n", s, yylineno);
+    void yyerror(char *s, ...){
+        va_list ap;
+
+        fprintf(stderr, "%d: error: ", yylineno);
+        vfprintf(stderr, s, ap);
+        fprintf(stderr, "\n");
     }
+
 
 
 %}
@@ -46,10 +51,12 @@ stringcon   ("{ch}")
 \\\n 	{ printf("c> "); } /* ignora continuacao de linha */
 
 \n 	{ return EOL; }
-.
+.   { yyerror("Caracter desconhecido %c\n", *yytext); };
 %%
 
-int main(){
+int main(void ){
+
     printf("> ");
     return yyparse();
+
 }
