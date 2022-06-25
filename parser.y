@@ -5,13 +5,22 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
+#include "parserfiles.h"
 
 int yylex();
 int yyparse();
 
-#include "parserfiles.h"
-
 %}
+
+%union {
+	struct ast *a;
+	double d;
+	struct symbol *s; /* qual simbolo? */
+	struct symlist *sl; 
+	int fn; /* qual funcao? */
+}
+
+
 %%
 
 %%
