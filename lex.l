@@ -7,7 +7,10 @@
 	#include <stdio.h>
 	#include <stdlib.h>
 	#include "parser.tab.h"
+    #include "lexerfiles.h"
+
 %}
+
 
 
 letter      [a-zA-Z]
@@ -20,6 +23,20 @@ stringcon   ("{ch}")
 %%
 
 %%
+
+"+" | /* operadores de caracter unico */
+"-" |
+"*" |
+"/" |
+"=" |
+"," |
+";" |
+"(" |
+")"     { return yytext[0]; }
+
+
+%%
+
 int main(){
     printf("> ");
     return yyparse();
