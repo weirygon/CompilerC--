@@ -1,5 +1,5 @@
 
-/* Analyser Flex    */
+/*  Analyser Flex    */
 
 %option noyywrap yylineno
 %{

@@ -15,3 +15,7 @@ int yyparse();
 %%
 
 %%
+
+int yyerror (char *s){
+  return printf("Erro encontrado: %s linha %i\n", s, yylineno);
+}
