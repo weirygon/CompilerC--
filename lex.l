@@ -14,6 +14,9 @@ intcon      (digit{digit})
 charcon     ('ch'|'\n'|'\0')
 stringcon   ("{ch}")
 
+%%
+
+%%
 int main(){
     printf("> ");
     return yyparse();
