@@ -5,26 +5,23 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
-#include "parserfiles.h"
 
 int yylex();
 int yyparse();
 
+extern int yylineno;
+extern int yyerror();
+
+
 %}
 
-%union {
-	struct ast *a;
-	double d;
-	struct symbol *s; /* qual simbolo? */
-	struct symlist *sl; 
-	int fn; /* qual funcao? */
-}
-
+%token EOL
+%token TEST
 
 %%
 
-%%
+    test: TEST {printf("TEste!!!\n");}
+    |TEST TEST {printf("Teste 2\n"); }
+    ;
 
-int yyerror (char *s){
-  return printf("Erro encontrado: %s linha %i\n", s, yylineno);
-}
+%%
