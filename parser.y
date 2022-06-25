@@ -3,11 +3,15 @@
 
 */
 %{
-# include <stdio.h>
-# include <stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 int yylex();
 int yyparse();
 
-# include "parserfiles.h"
+#include "parserfiles.h"
+
 %}
+%%
+
+%%

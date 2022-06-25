@@ -1,9 +1,12 @@
+
+/* Analyser Flex    */
+
 %option noyywrap yylineno
 %{
 	#include <string.h>
 	#include <stdio.h>
 	#include <stdlib.h>
-	#include "sintatico.tab.h"
+	#include "parser.tab.h"
 %}
 
 

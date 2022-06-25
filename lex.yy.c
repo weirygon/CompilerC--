@@ -464,13 +464,14 @@ int yy_flex_debug = 0;
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
 #line 1 "lex.l"
-#line 3 "lex.l"
+/* Analyser Flex    */
+#line 6 "lex.l"
 	#include <string.h>
 	#include <stdio.h>
 	#include <stdlib.h>
-	#include "sintatico.tab.h"
-#line 473 "lex.yy.c"
+	#include "parser.tab.h"
 #line 474 "lex.yy.c"
+#line 475 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -687,10 +688,10 @@ YY_DECL
 		}
 
 	{
-#line 17 "lex.l"
+#line 20 "lex.l"
 
 
-#line 694 "lex.yy.c"
+#line 695 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -759,10 +760,10 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 19 "lex.l"
+#line 22 "lex.l"
 ECHO;
 	YY_BREAK
-#line 766 "lex.yy.c"
+#line 767 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1779,7 +1780,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 19 "lex.l"
+#line 22 "lex.l"
 
 int main(){
     printf("> ");
