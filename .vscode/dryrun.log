@@ -1,9 +1,11 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/user/CompilerC--'
+clear
 bison -d parser.y
 flex lex.l
+echo "[+]Compiling..."
 gcc -o main parser.tab.c lex.yy.c -lfl -lm
-echo "[!]Runnig test"
+echo "[+]Runnig..."
 ./main
 make: Leaving directory '/home/user/CompilerC--'
  

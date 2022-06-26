@@ -23,7 +23,10 @@ extern int yyerror();
 %token <str> ID
 %token <num> NUMBER
 
+
 %token VOID CHAR INT FOR IF ELSE WHILE RETURN EXTERN
+
+
 
 %token EOL
 %token TEST
@@ -31,10 +34,11 @@ extern int yyerror();
 %start calclist
 %%
 
-
+    void:  void { printf("+++ %s \n", $2);}
+    ;
 /*
-    prog: dcl ';'  
-    |  func 
+    prog: dcl ';'  EOL
+    |  func EOL
     ;
 
     dcl:    type var_decl  
