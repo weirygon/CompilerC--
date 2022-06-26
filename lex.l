@@ -57,6 +57,7 @@ stringcon   ("{ch}")
 "for"       { return FOR;   }
 "while"     { return WHILE; }
 "return"    { return RETURN;}
+"extern"    { return EXTERN;}
 
 "//".*
 [ \t] /* ignora espaco em branco*/
