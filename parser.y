@@ -15,13 +15,24 @@ extern int yyerror();
 
 %}
 
-%token VOID FOR IF ELSE WHILE RETURN
+%token VOID FOR IF ELSE WHILE RETURN EXTERN
 
 %token EOL
 %token TEST
 
 %start calclist
 %%
+   /* prog: dcl ';'  
+    |  func 
+    ;
+
+    dcl:    type var_decl  
+    |       type var_decl ',' var_decl
+    |        
+    |	[ extern ] type id '(' parm_types ')' { ',' id '(' parm_types ')' }        |	[ extern ] void id '(' parm_types ')' { ',' id '(' parm_types ')' }
+    ;
+    var_decl: id [ '[' intcon']'] */
+
 
     calclist: /*Empty Word*/ 
     
