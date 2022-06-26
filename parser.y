@@ -15,24 +15,28 @@ extern int yyerror();
 
 %}
 
-%token VOID FOR IF ELSE WHILE RETURN EXTERN
+%token VOID CHAR INT FOR IF ELSE WHILE RETURN EXTERN
 
 %token EOL
 %token TEST
 
 %start calclist
-%%
-   /* prog: dcl ';'  
+%%/*
+    prog: dcl ';'  
     |  func 
     ;
 
     dcl:    type var_decl  
-    |       type var_decl ',' var_decl
-    |        
-    |	[ extern ] type id '(' parm_types ')' { ',' id '(' parm_types ')' }        |	[ extern ] void id '(' parm_types ')' { ',' id '(' parm_types ')' }
+    |       type var_decl ',' var_decl      
+    |	    EXTERN type id '(' parm_types ')' 
+    |       EXTERN type id '(' parm_types ')' ',' id '(' parm_types ')'
     ;
-    var_decl: id [ '[' intcon']'] */
 
+    var_decl: id'[' intcon ']'
+    ;
+    type:   CHAR
+    |       INT
+    ;*/
 
     calclist: /*Empty Word*/ 
     
