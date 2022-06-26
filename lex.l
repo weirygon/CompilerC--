@@ -52,8 +52,9 @@ stringcon   ("{ch}")
 "}"  { return yytext[0]; }
 
 "void"      { return VOID;  }
-"for"       { return FOR;   }
 "if"        { return IF;    }
+"else"      { return ELSE;  }
+"for"       { return FOR;   }
 "while"     { return WHILE; }
 "return"    { return RETURN;}
 

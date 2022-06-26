@@ -15,7 +15,7 @@ extern int yyerror();
 
 %}
 
-%token VOID FOR IF WHILE RETURN
+%token VOID FOR IF ELSE WHILE RETURN
 
 %token EOL
 %token TEST
