@@ -21,7 +21,8 @@ extern int yyerror();
 %token TEST
 
 %start calclist
-%%/*
+%%
+/*
     prog: dcl ';'  
     |  func 
     ;
@@ -32,12 +33,73 @@ extern int yyerror();
     |       EXTERN type id '(' parm_types ')' ',' id '(' parm_types ')'
     ;
 
-    var_decl: id'[' intcon ']'
+    var_decl:   //Empty Word
+    |           id'[' intcon ']'
     ;
+
     type:   CHAR
     |       INT
-    ;*/
+    ;
 
+    parm_types: VOID
+    |   type id '[' ']'
+    |   type id '[' ']', type id '[' ']'
+    ;
+
+    func:   type id '(' parm_types ')''{' type var_decl';' stmt '}'
+    |       type id '(' parm_types ')''{' type var_decl',' var_decl';' stmt '}' 
+    |       VOID id '(' parm_types ')''{' type var_decl';' stmt '}'
+    |       VOID id '(' parm_types ')''{' type var_decl',' var_decl';' stmt '}'
+    ;
+
+    stmt:   IF '(' expr ')' stmt
+    |       IF '(' expr ')' stmt ELSE stmt
+    |       WHILE '(' expr ')' stmt
+    |       FOR '(' assg ';' expr ';' assg ')' stmt
+    |       RETURN expr ';'
+    |       assg ';'
+    |       id '(' expr ')'';'
+    |       id '(' expr ',' expr ')'';'
+    |       '{' stmt '}'
+    |       ';'
+    ;
+
+    assg:   id '[' expr ']'
+    ;
+
+    expr:   // Empty Word
+    |       '-' expr
+    |       '!' expr
+    |       expr binop expr
+    |       expr relop expr
+    |       expr logical_op expr
+    |       id '(' expr ')'
+    |       id '(' expr ',' expr ')'
+    |       id '[' expr ']'
+    |       '(' expr ')'
+    |       intcon
+    |       charcon
+    |       stringcon
+    ;
+
+    binop:  '+'
+    |       '-'
+    |       '*'
+    |       '/'
+    ;
+
+    relop:  '=='
+    |       '!='
+    |       '<='
+    |       '<'
+    |       '>='
+    |       '>'
+    ;
+
+    logical_op: '&&'
+    |           '||'
+    ;
+*/
     calclist: /*Empty Word*/ 
     
     | calclist test EOL {
