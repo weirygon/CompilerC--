@@ -14,6 +14,14 @@ extern int yyerror();
 
 
 %}
+%union {
+
+    int num;
+    char* str;
+
+}
+%token <str> ID
+%token <num> NUMBER
 
 %token VOID CHAR INT FOR IF ELSE WHILE RETURN EXTERN
 
@@ -22,6 +30,8 @@ extern int yyerror();
 
 %start calclist
 %%
+
+
 /*
     prog: dcl ';'  
     |  func 
@@ -29,12 +39,12 @@ extern int yyerror();
 
     dcl:    type var_decl  
     |       type var_decl ',' var_decl      
-    |	    EXTERN type id '(' parm_types ')' 
-    |       EXTERN type id '(' parm_types ')' ',' id '(' parm_types ')'
+    |	    EXTERN type ID '(' parm_types ')' 
+    |       EXTERN type ID '(' parm_types ')' ',' ID '(' parm_types ')'
     ;
 
     var_decl:   //Empty Word
-    |           id'[' intcon ']'
+    |           ID'[' intcon ']'
     ;
 
     type:   CHAR
@@ -42,14 +52,14 @@ extern int yyerror();
     ;
 
     parm_types: VOID
-    |   type id '[' ']'
-    |   type id '[' ']', type id '[' ']'
+    |   type ID '[' ']'
+    |   type ID '[' ']', type ID '[' ']'
     ;
 
-    func:   type id '(' parm_types ')''{' type var_decl';' stmt '}'
-    |       type id '(' parm_types ')''{' type var_decl',' var_decl';' stmt '}' 
-    |       VOID id '(' parm_types ')''{' type var_decl';' stmt '}'
-    |       VOID id '(' parm_types ')''{' type var_decl',' var_decl';' stmt '}'
+    func:   type ID '(' parm_types ')''{' type var_decl';' stmt '}'
+    |       type ID '(' parm_types ')''{' type var_decl',' var_decl';' stmt '}' 
+    |       VOID ID '(' parm_types ')''{' type var_decl';' stmt '}'
+    |       VOID ID '(' parm_types ')''{' type var_decl',' var_decl';' stmt '}'
     ;
 
     stmt:   IF '(' expr ')' stmt
@@ -58,13 +68,13 @@ extern int yyerror();
     |       FOR '(' assg ';' expr ';' assg ')' stmt
     |       RETURN expr ';'
     |       assg ';'
-    |       id '(' expr ')'';'
-    |       id '(' expr ',' expr ')'';'
+    |       ID '(' expr ')'';'
+    |       ID '(' expr ',' expr ')'';'
     |       '{' stmt '}'
     |       ';'
     ;
 
-    assg:   id '[' expr ']'
+    assg:   ID '[' expr ']'
     ;
 
     expr:   // Empty Word
@@ -73,9 +83,9 @@ extern int yyerror();
     |       expr binop expr
     |       expr relop expr
     |       expr logical_op expr
-    |       id '(' expr ')'
-    |       id '(' expr ',' expr ')'
-    |       id '[' expr ']'
+    |       ID '(' expr ')'
+    |       ID '(' expr ',' expr ')'
+    |       ID '[' expr ']'
     |       '(' expr ')'
     |       intcon
     |       charcon
