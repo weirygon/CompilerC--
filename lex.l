@@ -34,7 +34,8 @@ stringcon   ("{ch}")
 
 %%
 
-"+" | /* operadores de caracter unico */
+"!" | /* single character operators */
+"+" |
 "-" |
 "*" |
 "/" |
@@ -42,7 +43,13 @@ stringcon   ("{ch}")
 "," |
 ";" |
 "(" |
-")"     { return yytext[0]; }
+")" | 
+"<" |
+">" |
+"[" |
+"]" |
+"{" |
+"}"  { return yytext[0]; }
 
 
 "//".*
