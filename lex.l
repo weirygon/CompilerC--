@@ -51,6 +51,11 @@ stringcon   ("{ch}")
 "{" |
 "}"  { return yytext[0]; }
 
+"void"      { return VOID;  }
+"for"       { return FOR;   }
+"if"        { return IF;    }
+"while"     { return WHILE; }
+"return"    { return RETURN;}
 
 "//".*
 [ \t] /* ignora espaco em branco*/
